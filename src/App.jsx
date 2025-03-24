@@ -1,7 +1,7 @@
-import { GlobalProvider } from "./contexts/GlobalContext";
-import { BrowserRouter, Routes, Route } from "react-router-dom"; // router
-import DefaultLayout from "./layouts/DefaultLayout"; // layouts
-import Homepage from "./pages/Homepage"; // pages
+import { GlobalProvider } from './contexts/GlobalContext';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // router
+import DefaultLayout from './layouts/DefaultLayout'; // layouts
+import Homepage from './pages/Homepage'; // pages
 
 function App() {
   return (
@@ -18,3 +18,5 @@ function App() {
 }
 
 export default App;
+
+// start code
