@@ -1,7 +1,13 @@
+import { useGlobalContext } from "../contexts/GlobalContext";
+import ListaViaggi from "../../components/ListaViaggi";
+
 export default function Homepage() {
+
+
   return (
     <main>
-      <h1>Titolo</h1>
+      <h1>ciao</h1>
+      <ListaViaggi />
     </main>
   );
 }
