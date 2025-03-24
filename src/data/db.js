@@ -48,4 +48,5 @@ const viaggiatori = [
     { id: 20, nome: "Simona", cognome: "Pellegrini", mail: "simona.pellegrini@email.com", data_nascita: "1995-03-28", codice_fiscale: "PLLSMN95C68F205S", id_viaggio: 4 }
   ];
   
+export { viaggi, viaggiatori };
   
