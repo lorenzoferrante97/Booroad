@@ -41,7 +41,7 @@ export default function DettaglioViaggiatore() {
           <strong>ID Viaggio:</strong> {id_viaggio}
         </p>
       </div>
-      <Link to={`/${id_viaggio}/viaggiatori`}>
+      <Link to={`/${id_viaggio}/viaggio`}>
         Torna alla lista dei viaggiatori
       </Link>
     </main>
