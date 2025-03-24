@@ -1,19 +1,34 @@
 import { useParams } from 'react-router-dom';
 import { useGlobalContext } from '../contexts/GlobalContext';
+import { useEffect } from 'react';
 
 export default function Viaggio() {
   const { id } = useParams();
 
-  const { getViaggiatori } = useGlobalContext();
+  const { getViaggiatori, arrayViaggiatori } = useGlobalContext();
 
-  const viaggiatoriViaggio = getViaggiatori(id);
+  useEffect(() => {
+    getViaggiatori(id);
+  }, []);
 
   return (
     <>
       <main>
         <h1>Viaggio 1</h1>
         <div>
-          <ul>Lista viaggiatori</ul>
+          <ul>
+            {arrayViaggiatori.map((viaggiatore) => {
+              const { id, nome, cognome } = viaggiatore;
+
+              return (
+                <li key={id}>
+                  <p>
+                    {nome} {cognome}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </main>
     </>

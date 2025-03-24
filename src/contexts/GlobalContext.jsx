@@ -11,7 +11,7 @@ const GlobalProvider = ({ children }) => {
 
   const getViaggiatori = (id) => {
     const viaggiatoriFiltrati = arrayViaggiatori.filter((viaggiatore) => {
-      return viaggiatore.id_viaggio === id;
+      return viaggiatore.id_viaggio === parseInt(id);
     });
 
     setArrayViaggiatori(viaggiatoriFiltrati);
