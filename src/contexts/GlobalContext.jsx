@@ -6,8 +6,9 @@ const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
   const {viaggi, viaggiatori} = db;
+  const [arrayViaggi, setarrayViaggi] = useState(viaggi);
 
-  const value = {viaggi};
+  const value = {arrayViaggi};
 
   return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>;
 };

@@ -3,10 +3,9 @@ import ListaViaggi from "../../components/ListaViaggi";
 
 export default function Homepage() {
 
-
   return (
     <main>
-      <h1>ciao</h1>
+      <h1>Lista Viaggi</h1>
       <ListaViaggi />
     </main>
   );
