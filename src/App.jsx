@@ -14,7 +14,7 @@ function App() {
             <Route path="/" Component={Homepage}></Route>
             <Route path="/:id/viaggio" Component={Viaggio}></Route>
             <Route
-              path="/:id/viaggio/:viaggiatoreId"
+              path="/:id/viaggiatori/:viaggiatoreId"
               Component={DettaglioViaggiatore}
             ></Route>
           </Route>
