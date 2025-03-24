@@ -14,4 +14,36 @@ export default function DettaglioViaggiatore() {
       </main>
     );
   }
+
+  const { nome, cognome, mail, data_nascita, codice_fiscale, id_viaggio } =
+    viaggiatore;
+
+  return (
+    <main>
+      <h1>Dettagli Viaggiatore</h1>
+      <div>
+        <p>
+          <strong>Nome:</strong> {nome}
+        </p>
+        <p>
+          <strong>Cognome:</strong> {cognome}
+        </p>
+        <p>
+          <strong>Email:</strong> {mail}
+        </p>
+        <p>
+          <strong>Data di nascita:</strong> {data_nascita}
+        </p>
+        <p>
+          <strong>Codice fiscale:</strong> {codice_fiscale}
+        </p>
+        <p>
+          <strong>ID Viaggio:</strong> {id_viaggio}
+        </p>
+      </div>
+      <Link to={`/${id_viaggio}/viaggiatori`}>
+        Torna alla lista dei viaggiatori
+      </Link>
+    </main>
+  );
 }
