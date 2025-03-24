@@ -7,52 +7,67 @@ export default function Viaggio() {
 
   const {
     getViaggiatori,
-    arrayViaggiatori,
+    arrayViaggiatoriFiltrati,
     handleInput,
     viaggiatoreFiltrato,
     handleSubmit,
+    resetViaggiatoriFiltrati,
   } = useGlobalContext();
 
   useEffect(() => {
+    resetViaggiatoriFiltrati();
     getViaggiatori(id);
-  }, []);
+  }, [id]);
 
   return (
-    <>
-      <main>
-        <h1>Viaggio 1</h1>
-        {/* form ricerca */}
-        <div>
-          <form onSubmit={(e) => handleSubmit(e, arrayViaggiatori)}>
-            <label htmlFor="ricercaViaggiatore">
-              Cerca viaggiatore per cognome
-            </label>
+    <main>
+      <h1>Viaggio {id}</h1>
+      {/* Form ricerca */}
+      <div>
+        <form onSubmit={(e) => handleSubmit(e)} className="mb-4">
+          <label htmlFor="ricercaViaggiatore" className="form-label">
+            Cerca viaggiatore per cognome
+          </label>
+          <div className="input-group">
             <input
               name="ricercaViaggiatore"
               type="text"
-              placeholder="cognome viaggiatore"
+              placeholder="Cognome viaggiatore"
               value={viaggiatoreFiltrato}
               onChange={(e) => handleInput(e)}
+              className="form-control"
             />
-            <button type="submit">Cerca</button>
-          </form>
-        </div>
-        <div>
-          <ul>
-            {arrayViaggiatori.map((viaggiatore) => {
-              const { id: viaggiatoreId, nome, cognome } = viaggiatore;
+            <button type="submit" className="btn btn-primary">
+              <i className="bi bi-search"></i> Cerca
+            </button>
+            <button
+              type="button"
+              onClick={resetViaggiatoriFiltrati}
+              className="btn btn-secondary"
+            >
+              <i className="bi bi-x"></i> Cancella
+            </button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <ul>
+          {arrayViaggiatoriFiltrati.map((viaggiatore) => {
+            const { id: viaggiatoreId, nome, cognome } = viaggiatore;
 
-              return (
-                <li key={viaggiatoreId}>
-                  <Link to={`/${id}/viaggiatori/${viaggiatoreId}`}>
-                    {nome} {cognome}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </main>
-    </>
+            return (
+              <li key={viaggiatoreId}>
+                <Link
+                  to={`/${id}/viaggiatori/${viaggiatoreId}`}
+                  className="viaggiatore-link"
+                >
+                  {nome} {cognome}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </main>
   );
 }

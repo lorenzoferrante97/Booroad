@@ -2,10 +2,12 @@ import { useParams, Link } from "react-router-dom";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function DettaglioViaggiatore() {
-  const { id } = useParams();
+  const { viaggiatoreId } = useParams();
   const { arrayViaggiatori } = useGlobalContext();
 
-  const viaggiatore = arrayViaggiatori.find((v) => v.id === parseInt(id));
+  const viaggiatore = arrayViaggiatori.find(
+    (v) => v.id === parseInt(viaggiatoreId)
+  );
 
   if (!viaggiatore) {
     return (
@@ -21,7 +23,7 @@ export default function DettaglioViaggiatore() {
   return (
     <main>
       <h1>Dettagli Viaggiatore</h1>
-      <div>
+      <div className="dettaglio-viaggiatore">
         <p>
           <strong>Nome:</strong> {nome}
         </p>
@@ -41,7 +43,7 @@ export default function DettaglioViaggiatore() {
           <strong>ID Viaggio:</strong> {id_viaggio}
         </p>
       </div>
-      <Link to={`/${id_viaggio}/viaggio`}>
+      <Link to={`/${id_viaggio}/viaggio`} className="torna-indietro">
         Torna alla lista dei viaggiatori
       </Link>
     </main>
