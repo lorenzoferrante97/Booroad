@@ -17,7 +17,7 @@ export default function Viaggio() {
   useEffect(() => {
     resetViaggiatoriFiltrati();
     getViaggiatori(id);
-  }, [id]);
+  }, []);
 
   return (
     <main>
