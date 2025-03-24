@@ -1,6 +1,13 @@
+import { useParams } from 'react-router-dom';
 import { useGlobalContext } from '../contexts/GlobalContext';
 
 export default function Viaggio() {
+  const { id } = useParams();
+
+  const { getViaggiatori } = useGlobalContext();
+
+  const viaggiatoriViaggio = getViaggiatori(id);
+
   return (
     <>
       <main>

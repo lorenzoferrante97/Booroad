@@ -9,7 +9,15 @@ const GlobalProvider = ({ children }) => {
   const [arrayViaggi, setarrayViaggi] = useState(viaggi);
   const [arrayViaggiatori, setArrayViaggiatori] = useState(viaggiatori);
 
-  const value = { arrayViaggi, arrayViaggiatori };
+  const getViaggiatori = (id) => {
+    const viaggiatoriFiltrati = arrayViaggiatori.filter((viaggiatore) => {
+      return viaggiatore.id_viaggio === id;
+    });
+
+    setArrayViaggiatori(viaggiatoriFiltrati);
+  };
+
+  const value = { arrayViaggi, arrayViaggiatori, getViaggiatori };
 
   return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>;
 };
