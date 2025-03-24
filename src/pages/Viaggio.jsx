@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useGlobalContext } from '../contexts/GlobalContext';
 import { useEffect } from 'react';
 
@@ -30,9 +30,9 @@ export default function Viaggio() {
 
               return (
                 <li key={id}>
-                  <p>
+                  <Link to={'/'}>
                     {nome} {cognome}
-                  </p>
+                  </Link>
                 </li>
               );
             })}
