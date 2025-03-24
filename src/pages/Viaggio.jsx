@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 export default function Viaggio() {
   const { id } = useParams();
 
-  const { getViaggiatori, arrayViaggiatori } = useGlobalContext();
+  const { getViaggiatori, arrayViaggiatori, handleInput, viaggiatoreFiltrato, handleSubmit } = useGlobalContext();
 
   useEffect(() => {
     getViaggiatori(id);
@@ -17,9 +17,9 @@ export default function Viaggio() {
         <h1>Viaggio 1</h1>
         {/* form ricerca */}
         <div>
-          <form>
+          <form onSubmit={(e) => handleSubmit(e, arrayViaggiatori)}>
             <label htmlFor="ricercaViaggiatore">Cerca viaggiatore per cognome</label>
-            <input name="ricercaViaggiatore" type="text" placeholder="cognome viaggiatore" />
+            <input name="ricercaViaggiatore" type="text" placeholder="cognome viaggiatore" value={viaggiatoreFiltrato} onChange={(e) => handleInput(e)} />
             <button type="submit">Cerca</button>
           </form>
         </div>

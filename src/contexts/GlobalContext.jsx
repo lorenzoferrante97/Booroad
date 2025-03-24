@@ -9,6 +9,27 @@ const GlobalProvider = ({ children }) => {
   const [arrayViaggi, setarrayViaggi] = useState(viaggi);
   const [arrayViaggiatori, setArrayViaggiatori] = useState(viaggiatori);
 
+  const [viaggiatoreFiltrato, setViaggiatoreFiltrato] = useState('');
+
+  const handleInput = (e) => {
+    setViaggiatoreFiltrato(e.target.value);
+  };
+
+  const handleSubmit = (e, arrayViaggiatori) => {
+    e.preventDefault();
+
+    const ricercaViaggiatore = arrayViaggiatori.filter((viaggiatore) => {
+      const v = viaggiatore.cognome.toLowerCase();
+      const vFiltrato = viaggiatoreFiltrato.toLowerCase();
+
+      return v.includes(vFiltrato);
+    });
+
+    console.log('ric viagg: ', ricercaViaggiatore);
+
+    setArrayViaggiatori(ricercaViaggiatore);
+  };
+
   const getViaggiatori = (id) => {
     const viaggiatoriFiltrati = arrayViaggiatori.filter((viaggiatore) => {
       return viaggiatore.id_viaggio === parseInt(id);
@@ -17,7 +38,7 @@ const GlobalProvider = ({ children }) => {
     setArrayViaggiatori(viaggiatoriFiltrati);
   };
 
-  const value = { arrayViaggi, arrayViaggiatori, getViaggiatori };
+  const value = { arrayViaggi, arrayViaggiatori, getViaggiatori, viaggiatoreFiltrato, handleInput, handleSubmit };
 
   return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>;
 };
