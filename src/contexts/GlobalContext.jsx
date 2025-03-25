@@ -44,9 +44,9 @@ const GlobalProvider = ({ children }) => {
     setArrayViaggiatoriFiltrati(viaggiatoriFiltrati);
   };
 
-  const resetViaggiatoriFiltrati = () => {
-    setArrayViaggiatoriFiltrati(arrayViaggiatori);
+  const resetViaggiatoriFiltrati = (id) => {
     setViaggiatoreFiltrato("");
+    getViaggiatori(id)
   };
 
   const value = {

@@ -15,7 +15,6 @@ export default function Viaggio() {
   } = useGlobalContext();
 
   useEffect(() => {
-    resetViaggiatoriFiltrati();
     getViaggiatori(id);
   }, []);
 
@@ -42,7 +41,7 @@ export default function Viaggio() {
             </button>
             <button
               type="button"
-              onClick={resetViaggiatoriFiltrati}
+              onClick={() => resetViaggiatoriFiltrati(id)}
               className="btn btn-secondary"
             >
               <i className="bi bi-x"></i> Cancella
@@ -52,7 +51,7 @@ export default function Viaggio() {
       </div>
       <div>
         <ul>
-          {arrayViaggiatoriFiltrati.map((viaggiatore) => {
+          {arrayViaggiatoriFiltrati?.map((viaggiatore) => {
             const { id: viaggiatoreId, nome, cognome } = viaggiatore;
 
             return (
