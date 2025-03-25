@@ -39,7 +39,7 @@ const GlobalProvider = ({ children }) => {
       return v.includes(vFiltrato);
     });
 
-    setArrayViaggiatoriFiltrati(ricercaViaggiatore);
+    ricercaViaggiatore.length > 0 ? (setArrayViaggiatoriFiltrati(ricercaViaggiatore), setIsFound(true)) : setIsFound(false);
   };
 
   const handleSubmitViaggio = (e) => {
@@ -70,11 +70,13 @@ const GlobalProvider = ({ children }) => {
 
   const resetViaggiatoriFiltrati = (id) => {
     setViaggiatoreFiltrato('');
+    setIsFound(true);
     getViaggiatori(id);
   };
 
   const resetViaggioFiltrato = () => {
     setViaggioFiltrato('');
+    setIsFound(true);
     setOggettoViaggioFiltrato(viaggi);
   };
 

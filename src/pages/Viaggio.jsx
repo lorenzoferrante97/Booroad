@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 export default function Viaggio() {
   const { id } = useParams();
 
-  const { getViaggiatori, arrayViaggiatoriFiltrati, handleInput, viaggiatoreFiltrato, handleSubmit, resetViaggiatoriFiltrati } = useGlobalContext();
+  const { getViaggiatori, arrayViaggiatoriFiltrati, handleInput, viaggiatoreFiltrato, handleSubmit, resetViaggiatoriFiltrati, isFound } = useGlobalContext();
 
   useEffect(() => {
     getViaggiatori(id);
@@ -33,17 +33,21 @@ export default function Viaggio() {
       </div>
       <div>
         <ul>
-          {arrayViaggiatoriFiltrati?.map((viaggiatore) => {
-            const { id: viaggiatoreId, nome, cognome } = viaggiatore;
+          {!isFound ? (
+            <li>Nessun viaggiatore trovato.</li>
+          ) : (
+            arrayViaggiatoriFiltrati?.map((viaggiatore) => {
+              const { id: viaggiatoreId, nome, cognome } = viaggiatore;
 
-            return (
-              <li key={viaggiatoreId}>
-                <Link to={`/${id}/viaggiatori/${viaggiatoreId}`} className="viaggiatore-link">
-                  {nome} {cognome}
-                </Link>
-              </li>
-            );
-          })}
+              return (
+                <li key={viaggiatoreId}>
+                  <Link to={`/${id}/viaggiatori/${viaggiatoreId}`} className="viaggiatore-link">
+                    {nome} {cognome}
+                  </Link>
+                </li>
+              );
+            })
+          )}
         </ul>
       </div>
     </main>
