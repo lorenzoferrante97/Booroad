@@ -14,6 +14,9 @@ const GlobalProvider = ({ children }) => {
   const [viaggiatoreFiltrato, setViaggiatoreFiltrato] = useState('');
   const [viaggioFiltrato, setViaggioFiltrato] = useState('');
 
+  // variabile booleana per errore nel caso in cui non si trovi nulla
+  const [isFound, setIsFound] = useState(true);
+
   const handleInput = (e) => {
     setViaggiatoreFiltrato(e.target.value);
   };
@@ -52,7 +55,7 @@ const GlobalProvider = ({ children }) => {
       return id === parseInt(viaggioFiltrato);
     });
 
-    setOggettoViaggioFiltrato([ricercaViaggio]);
+    ricercaViaggio ? (setOggettoViaggioFiltrato([ricercaViaggio]), setIsFound(true)) : setIsFound(false);
   };
 
   const filterViaggi = () => {};
@@ -90,6 +93,7 @@ const GlobalProvider = ({ children }) => {
     handleSubmitViaggio,
     oggettoViaggioFiltrato,
     resetViaggioFiltrato,
+    isFound,
   };
 
   return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>;

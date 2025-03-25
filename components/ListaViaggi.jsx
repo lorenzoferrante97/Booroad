@@ -3,19 +3,23 @@ import { useGlobalContext } from '../src/contexts/GlobalContext';
 import { Link } from 'react-router-dom';
 
 export default function ListaViaggi() {
-  const { oggettoViaggioFiltrato } = useGlobalContext();
+  const { oggettoViaggioFiltrato, isFound } = useGlobalContext();
 
   return (
     <ul>
-      {oggettoViaggioFiltrato?.map((v) => {
-        return (
-          <li key={v.id}>
-            <Link to={`/${v.id}/viaggio`}>
-              {v.nome} ({v.data})
-            </Link>
-          </li>
-        );
-      })}
+      {!isFound ? (
+        <p>Nessun viaggio trovato.</p>
+      ) : (
+        oggettoViaggioFiltrato?.map((v) => {
+          return (
+            <li key={v.id}>
+              <Link to={`/${v.id}/viaggio`}>
+                {v.nome} ({v.data})
+              </Link>
+            </li>
+          );
+        })
+      )}
     </ul>
   );
 }
