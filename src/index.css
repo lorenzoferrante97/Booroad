@@ -35,10 +35,11 @@ main {
 /* Stili per la lista dei viaggi (ListaViaggi) */
 ul {
   list-style: none;
-  padding: 0;
+  padding: 0 !important;
+  margin: 0;
 }
 
-ul li {
+main ul li {
   margin-bottom: 0.75rem;
 }
 
@@ -184,9 +185,15 @@ main {
   form {
     flex-direction: column;
   }
-
+  
   form input,
   form button {
     width: 100%;
+    border-radius: 5px !important;
+  }
+
+  .nav-link.active {
+    background-color: transparent;
+    border-radius: 5px;
   }
 }
